@@ -1,23 +1,29 @@
 import random
-strikes = 0
-turn = 0
-while strikes < 3:
-    input('enter to roll: ')
-    roll = random.randint(1, 20)
-    print('\n' + str(roll))
-    turn += 1
-    print('Turn:', turn)
-    if roll == 20:
-        strikes = 10
-        print("You survive")
-    elif roll < 10:
-        print('You get worse')
-        strikes += 1
-        print('Strike:', strikes)
+trials = 0
+survived = 0
+died = 0
+duration = []
+while trials != 1000000:
+    strikes = 0
+    turn = 0
+    while strikes < 3:
+        roll = random.randint(1, 20)
+        turn += 1
+        if roll == 20:
+            strikes = 10
+        elif roll < 10:
+            strikes += 1
+        else:
+            pass
+    if strikes == 10:
+        survived += 1
     else:
-        print("You condition stays the same")
-        print('Strike:', strikes)
-if strikes == 10:
-    print("You live")
-else:
-    print("You die")
+        died += 1
+        duration.append(turn)
+    trials += 1
+print('Survival ratio:', survived / trials)
+print('Death ratio:', died / trials)
+total = 0
+for n in duration:
+    total += n
+print('Average time til death:', total / len(duration))
