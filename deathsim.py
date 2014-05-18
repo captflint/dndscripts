@@ -24,6 +24,10 @@ while trials != 1000000:
 print('Survival ratio:', survived / trials)
 print('Death ratio:', died / trials)
 total = 0
+longest = 0
 for n in duration:
     total += n
+    if n > longest:
+        longest = n
 print('Average time til death:', total / len(duration))
+print('Longest time until death:', longest)
