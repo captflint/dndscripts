@@ -3,7 +3,7 @@ trials = 0
 survived = 0
 died = 0
 duration = []
-while trials != 1000000:
+while trials != 1000000000:
     strikes = 0
     turn = 0
     while strikes < 3:
