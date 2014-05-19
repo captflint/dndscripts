@@ -2,7 +2,8 @@ import random
 trials = 0
 survived = 0
 died = 0
-duration = []
+turnavg = 0
+longest = 0
 while trials != 1000000000:
     strikes = 0
     turn = 0
@@ -19,17 +20,13 @@ while trials != 1000000000:
         survived += 1
     else:
         died += 1
-        duration.append(turn)
+        turnavg = (turnavg * (died - 1) + turn) / died
+        if turn > longest:
+            longest = turn
     trials += 1
     if trials % 1000000 == 0:
         print(trials / 1000000000)
 print('Survival ratio:', survived / trials)
 print('Death ratio:', died / trials)
-total = 0
-longest = 0
-for n in duration:
-    total += n
-    if n > longest:
-        longest = n
-print('Average time til death:', total / len(duration))
+print('Average time til death:', turnavg)
 print('Longest time until death:', longest)
