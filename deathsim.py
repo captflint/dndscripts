@@ -21,6 +21,8 @@ while trials != 1000000000:
         died += 1
         duration.append(turn)
     trials += 1
+    if trials % 1000000 == 0:
+        print(trials / 1000000000)
 print('Survival ratio:', survived / trials)
 print('Death ratio:', died / trials)
 total = 0
