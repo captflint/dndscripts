@@ -1,6 +1,5 @@
 import random
-heads = 0
-tails = 0
+results = [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0], [13, 0], [14, 0], [15, 0], [16, 0], [17, 0], [18, 0], [19, 0], [20, 0]]
 trials = 1000000000
 totaltrials = trials
 longest_streak = 0
@@ -23,16 +22,15 @@ def streak(current_trial):
         current_streak = 1
         last_trial = current_trial
 while trials != 0:
-    flip = random.randint(0, 1)
-    if flip == 1:
-        heads += 1
+    roll = random.randint(1, 20)
+    for x in range(0, 20):
+        if roll == results[x][0]:
+            results[x][1] += 1
+            break
+    if roll == 20:
         streak(trials)
-    elif flip == 0:
-        tails += 1
-    else:
-        print('dafuq?')
     trials -= 1
     progress()
-print('Heads:', heads / totaltrials)
-print('Tails:', tails / totaltrials)
+for item in results:
+    print(item[0], '\t', item[1] / totaltrials)
 print('Longest streak:', longest_streak)
