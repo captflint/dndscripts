@@ -1,4 +1,4 @@
-import random
+from random import randint
 
 def roll(dice):
     number = ''
@@ -20,7 +20,7 @@ def roll(dice):
     rolls = []
 
     while number != 0:
-        rolls.append(random.randint(1, sides))
+        rolls.append(randint(1, sides))
         number -= 1
 
     return(rolls)
