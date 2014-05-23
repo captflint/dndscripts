@@ -7,4 +7,9 @@ for x in range(0, 6):
     statroll.sort()
     del statroll[0]
     results.append(sum(statroll))
+modifiers = []
+for stat in results:
+    stat = stat - 10
+    modifiers.append(stat // 2)
 print(results)
+print('total modifiers:', sum(modifiers))
